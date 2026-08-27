@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>서울특별시교육청 계약업무 처리지침 Gemini AI 챗봇</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<section id="setup" class="setup">
+<div class="setup-card">
+  <div class="eyebrow">SEOUL METROPOLITAN OFFICE OF EDUCATION</div>
+  <h1>계약업무 Gemini AI 챗봇</h1>
+  <div class="desc">API 키로 <b>모델 목록만 확인하지 않고 실제 답변 생성까지 테스트</b>합니다. 실제 테스트에 성공한 모델만 선택할 수 있습니다.</div>
+  <div class="field"><label>1. Gemini API 키</label><div class="keyrow"><input id="apiKey" class="control" type="password" autocomplete="off" placeholder="Gemini API Key 입력"><button class="btn secondary" onclick="toggleKey()">보기</button></div></div>
+  <button id="checkBtn" class="btn primary" onclick="verifyKeyAndModels()">API 키 확인 + 실제 사용 가능한 모델 검사</button>
+  <div id="status" class="status wait">API 키를 입력한 뒤 검사 버튼을 누르세요.</div>
+  <div id="progressWrap" class="progress hidden"><div id="bar" class="bar"></div></div>
+  <div id="testlog" class="testlog hidden"></div>
+  <div id="modelArea" class="field hidden"><label>2. 실제 생성 테스트에 성공한 모델</label><div style="font-size:11px;color:#718293">아래 모델은 현재 입력한 API 키로 generateContent 실제 호출까지 성공한 모델입니다.</div><div id="models" class="model-list"></div><button class="btn primary enter" onclick="enterChat()">선택한 모델로 챗봇 시작</button></div>
+  <div class="security">🔐 API 키는 HTML 소스에 저장하지 않으며 현재 브라우저 메모리에서만 사용합니다. 모델 검증 과정에서 아주 짧은 테스트 요청이 각 후보 모델에 전송됩니다.</div>
+</div></section>
+<section id="app" class="app hidden"><aside class="sidebar"><div class="brand">📘 계약업무 AI 챗봇<small>2023-12-27 개정 자료 · 지침 데이터 포함</small></div><div class="sidebox"><div class="side-title">현재 실사용 검증 모델</div><div id="sideModel" style="font-size:12px;font-weight:900"></div><button class="sidebtn" style="margin-top:7px" onclick="changeModel()">← API 키 / 모델 다시 검사</button></div><div class="sidebox"><div class="side-title">자주 묻는 질문</div><button class="sidebtn" onclick="preset('1인견적 수의계약 기준과 근거 조항을 알려줘')">1인견적 수의계약 기준</button><button class="sidebtn" onclick="preset('동일업체 수의계약 횟수 제한과 예외를 알려줘')">동일업체 수의계약 제한</button><button class="sidebtn" onclick="preset('물품 계약 시 구비서류를 단계별로 알려줘')">물품 계약 구비서류</button><button class="sidebtn" onclick="preset('용역 계약 시 구비서류를 단계별로 알려줘')">용역 계약 구비서류</button><button class="sidebtn" onclick="preset('계약서 작성을 생략할 수 있는 금액 기준은?')">계약서 생략 기준</button><button class="sidebtn" onclick="preset('청렴서약서는 언제 받아야 하나요?')">청렴서약서</button></div><div class="sidebox"><div class="side-title">문서 목차</div><div id="toc"></div></div></aside>
+<main class="main"><header class="top"><div><h2>서울특별시교육청 계약업무 처리지침</h2><p>문서 검색 → 관련 조항 선별 → Gemini 답변 → 근거 원문 표시</p></div><div id="topModel" class="model-badge"></div></header><div id="chat" class="chat"><div class="row bot"><div class="bubble"><b>질문을 입력하세요.</b><br>내장된 지침에서 관련 내용을 찾은 뒤, 실사용 검증을 통과한 Gemini 모델로 답변합니다.</div></div></div><footer class="composer"><div class="inputrow"><textarea id="question" placeholder="예: 2천만원 이하 물품 구매는 1인견적이 가능한가요?" onkeydown="onKey(event)"></textarea><button class="send" onclick="sendQuestion()">질문하기</button></div><div class="footnote">※ 첨부된 2023.12.27 개정 지침 기준입니다. 실제 업무 처리 전 최신 법령·예규·별도 사업지침을 확인하세요.</div></footer></main></section>
+<script src="loader.js"></script><script src="app.js"></script></body></html>
